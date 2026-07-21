@@ -11,4 +11,11 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+    res.json({
+        success: true,
+        message: "Event Ticket Booking API"
+    });
+});
+
 export default app;
