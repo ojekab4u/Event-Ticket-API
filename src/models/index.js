@@ -1,6 +1,7 @@
 import User from "./User.js";
 import Event from "./Event.js";
 import Reservation from "./Reservation.js";
+import Payment from "./Payment.js";
 
 // User → Event
 User.hasMany(Event, {
@@ -35,4 +36,14 @@ Reservation.belongsTo(Event, {
   as: "event",
 });
 
-export { User, Event, Reservation };
+Reservation.hasOne(Payment, {
+  foreignKey: "reservationId",
+  as: "payment",
+});
+
+Payment.belongsTo(Reservation, {
+  foreignKey: "reservationId",
+  as: "reservation",
+});
+
+export { User, Event, Reservation, Payment };
