@@ -22,8 +22,7 @@ export const connectDB = async () => {
     console.log("Database Connected");
 
     // Import models before syncing
-    await import("../models/User.js");
-    await import("../models/Event.js");
+    await import("../models/index.js");
 
     await sequelize.sync({ alter: true });
 

@@ -66,12 +66,4 @@ const Event = sequelize.define(
   }
 );
 
-User.hasMany(Event, {
-  foreignKey: "organizerId",
-});
-
-Event.belongsTo(User, {
-  foreignKey: "organizerId",
-});
-
 export default Event;

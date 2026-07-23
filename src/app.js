@@ -5,6 +5,7 @@ import morgan from "morgan";
 
 import authRoutes from "./routes/auth.routes.js";
 import eventRoutes from "./routes/event.routes.js";
+import errorHandler from "./middlewares/error.middleware.js";
 
 const app = express();
 
@@ -24,5 +25,6 @@ app.get("/", (req, res) => {
     });
 });
 
+app.use(errorHandler)
 
 export default app;
