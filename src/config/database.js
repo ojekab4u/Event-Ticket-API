@@ -24,7 +24,7 @@ export const connectDB = async () => {
     // Import models before syncing
     await import("../models/index.js");
 
-    await sequelize.sync({ alter: true });
+    await sequelize.sync();;
 
     console.log("Tables Synced");
   } catch (error) {

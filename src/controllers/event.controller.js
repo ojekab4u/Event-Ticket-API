@@ -5,16 +5,29 @@ import {
   getEventByIdService,
   updateEventService,
   deleteEventService,
+  getMyEventsService,
 } from "../services/event.service.js";
+import { uploadImage } from "../services/upload.service.js";
 
 export const createEvent = asyncHandler(async (req, res) => {
-  const event = await createEventService(req.body, req.user.id);
+  let bannerImage = null;
+
+  if (req.file) {
+    const uploadedImage = await uploadImage(req.file.buffer);
+    bannerImage = uploadedImage.secure_url;
+  }
+
+  const event = await createEventService(
+    {...req.body, bannerImage },
+    req.user.id
+  );
 
   res.status(201).json({
     success: true,
     event,
   });
 });
+
 
 export const getAllEvents = asyncHandler(async (req, res) => {
   const result = await getAllEventsService(req.query);
@@ -31,6 +44,15 @@ export const getEventById = asyncHandler(async (req, res) => {
   res.status(200).json({
     success: true,
     event,
+  });
+});
+
+export const getMyEvents = asyncHandler(async (req, res) => {
+  const events = await getMyEventsService(req.user.id);
+
+  res.status(200).json({
+    success: true,
+    events,
   });
 });
 
