@@ -19,17 +19,11 @@ const sequelize = new Sequelize(
 export const connectDB = async () => {
   try {
     await sequelize.authenticate();
-    console.log("Database Connected");
 
-    // Import models before syncing
     await import("../models/index.js");
 
-    await sequelize.sync();;
-
-    console.log("Tables Synced");
-  } catch (error) {
-  console.error("Database connection failed");
-  console.error(error);
+    await sequelize.sync();;   
+  } catch (error) {  
 
   process.exit(1);
 }
