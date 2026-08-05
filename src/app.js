@@ -2,12 +2,15 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+import swaggerUi from "swagger-ui-express";
 
 import errorHandler from "./middlewares/error.middleware.js";
 import authRoutes from "./routes/auth.routes.js";
 import eventRoutes from "./routes/event.routes.js";
 import reservationRoutes from "./routes/reservation.routes.js";
 import paymentRoutes from "./routes/payment.routes.js";
+
+import swaggerSpec from "./config/swagger.js";
 
 const app = express();
 
@@ -29,6 +32,11 @@ app.get("/", (req, res) => {
     });
 });
 
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec)
+);
 app.use(errorHandler)
 
 export default app;

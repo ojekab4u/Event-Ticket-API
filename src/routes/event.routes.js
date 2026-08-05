@@ -22,6 +22,18 @@ router.post(
   upload.single("bannerImage"),
   createEvent
 );
+
+/**
+ * @swagger
+ * /events:
+ *   get:
+ *     summary: Get all events
+ *     tags:
+ *       - Events
+ *     responses:
+ *       200:
+ *         description: List of all events
+ */
 router.get("/", getAllEvents);
 router.get(
   "/my-events",
