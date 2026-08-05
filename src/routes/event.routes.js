@@ -3,12 +3,14 @@ import { createEvent,
     getAllEvents, 
     getEventById, 
     updateEvent,
-    deleteEvent
+    deleteEvent,
+    getMyEvents,
 } from "../controllers/event.controller.js";
 import { protect } from "../middlewares/auth.middleware.js";
 import { authorize } from "../middlewares/role.middleware.js";
 import validate from "../middlewares/validate.middleware.js";
 import { createEventValidator } from "../validators/event.validator.js";
+import upload from "../middlewares/upload.middleware.js";
 
 
 const router = express.Router();
@@ -17,11 +19,28 @@ router.post(
   "/",
   protect,
   authorize("ORGANIZER"),
-  createEventValidator,
-  validate,
+  upload.single("bannerImage"),
   createEvent
 );
+
+/**
+ * @swagger
+ * /events:
+ *   get:
+ *     summary: Get all events
+ *     tags:
+ *       - Events
+ *     responses:
+ *       200:
+ *         description: List of all events
+ */
 router.get("/", getAllEvents);
+router.get(
+  "/my-events",
+  protect,
+  authorize("ORGANIZER"),
+  getMyEvents
+);
 router.get("/:id", getEventById);
 router.put(
   "/:id",

@@ -11,12 +11,11 @@ async function startServer() {
         await connectDB();
 
         app.listen(PORT, () => {
-            console.log(`Server running on port ${PORT}`);
+           
         });
 
     } catch (error) {
-        console.error("Unable to connect to database:");
-        console.error(error.message);
+       
     }
 }
 

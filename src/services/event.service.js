@@ -4,10 +4,7 @@ import User from "../models/User.js";
 import AppError from "../utils/AppError.js";
 
 export const createEventService = async (eventData, organizerId) => {
-  return await Event.create({
-    ...eventData,
-    organizerId,
-  });
+  return await Event.create({...eventData, organizerId, availableTickets: eventData.capacity,});
 };
 
 export const getAllEventsService = async (query) => {
@@ -86,6 +83,15 @@ export const getEventByIdService = async (id) => {
   }
 
   return event;
+};
+
+export const getMyEventsService = async (organizerId) => {
+  return await Event.findAll({
+    where: {
+      organizerId,
+    },
+    order: [["createdAt", "DESC"]],
+  });
 };
 
 export const updateEventService = async (
