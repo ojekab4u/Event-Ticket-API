@@ -9,46 +9,36 @@ The Event Ticket Booking & Reservation API is a RESTful backend application that
 The project was developed as part of the TechCrush Capstone Project using Node.js, Express.js, PostgreSQL, and Sequelize ORM, following a layered architecture with controllers, services, middleware, validators, and utilities.
 
 ---
-
-## Features
+## Key Features
 
 ### Authentication & Authorization
-
-- User registration
-- User login
+- User registration and login
 - JWT authentication
 - Password hashing with bcrypt
 - Protected routes
-- Role-based authorization (USER and ORGANIZER)
+- Role-based authorization
 
 ### Event Management
-
-- Create events
-- Update events
-- Delete events
-- Get all events
-- Get a single event
-- Get organizer's events
-- Search events
-- Filter events by category
+- Create, update and delete events
+- Retrieve events
+- Organizer-specific event management
+- Search and category filtering
 - Pagination
-- Upload event banner images to Cloudinary
+- Cloudinary image uploads
 
-### Reservation Management
-
-- Reserve event tickets
-- View user reservations
-- Get reservation details
-- Cancel reservations
+### Reservations
+- Ticket reservation
+- Reservation history
+- Reservation details
+- Reservation cancellation
 - Automatic ticket availability updates
-- Database transaction support
+- Database transactions
 
-### Payment Management
-
+### Payments
 - Simulated payment processing
-- Unique payment reference generation
+- Unique payment references
 - Reservation confirmation
-- Email notification after successful payment
+- Email notification
 
 ### Additional Features
 
@@ -61,6 +51,10 @@ The project was developed as part of the TechCrush Capstone Project using Node.j
 - Clean service-based architecture
 
 ---
+### Architecture
+The application follows a service-oriented backend structure with
+separation between routes, controllers, services, models, middleware,
+validators and utilities.
 
 ## Technology Stack
 
@@ -269,7 +263,7 @@ Example:
 
 Ojetunde Kabir Olatunde
 
-Backend Developer
+GitHub: https://github.com/ojekab4u
 
 ---
 
